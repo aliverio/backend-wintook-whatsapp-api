@@ -17,7 +17,7 @@ app.get(`/`, (req, res) => {
   return res.json({ message: `API DEPLOY SUCCESS` });
 });
 
-app.get(`/whatsapp`, (req, res) => {
+app.post(`/whatsapp`, (req, res) => {
   var axios = require("axios");
   var FormData = require("form-data");
   var fs = require("fs");
