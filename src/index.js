@@ -22,6 +22,14 @@ app.post(`/whatsapp`, (req, res) => {
   var FormData = require("form-data");
   var fs = require("fs");
 
+//   {
+//     urlDomain: 'https://app.wintook.com/',
+//     accountId: 38,
+//     ConversationId: 5185,
+//     file: 'A00012.pdf'
+//   }
+  
+
   var data = new FormData();
   data.append(
     "attachments[]",
@@ -30,9 +38,9 @@ app.post(`/whatsapp`, (req, res) => {
 
   var config = {
     method: "post",
-    url: "https://app.wintook.com/api/v1/accounts/38/conversations/5185/messages",
+    url: `${req.body.urlDomain}api/v1/accounts/${req.body.accountId}/conversations/${req.body.ConversationId}/messages`,
     headers: {
-      api_access_token: "SP6FvYSTYpr9piWc5imLXBEq",
+      api_access_token: `${req.body.apiAccessToken}`,
       file_type: "application/pdf",
       "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary",
       ...data.getHeaders(),
@@ -42,7 +50,6 @@ app.post(`/whatsapp`, (req, res) => {
 
   axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data));
       return res.json(response.data);
     })
     .catch(function (error) {
