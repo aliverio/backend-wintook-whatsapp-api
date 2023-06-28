@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/static", express.static(`${__dirname}/public`));
+// app.use("/static", express.static(`${__dirname}/public`));
 
 app.get(`/`, (req, res) => {
   return res.json({ message: `API DEPLOY SUCCESS` });
@@ -25,7 +25,7 @@ app.post(`/whatsapp`, (req, res) => {
   var data = new FormData();
   data.append(
     "attachments[]",
-    fs.createReadStream("./files/A00012.pdf")
+    fs.createReadStream(`${__dirname}/files/A00012.pdf`)
   );
 
   var config = {
