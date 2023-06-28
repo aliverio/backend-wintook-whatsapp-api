@@ -25,7 +25,7 @@ app.post(`/whatsapp`, (req, res) => {
   var data = new FormData();
   data.append(
     "attachments[]",
-    fs.createReadStream("/home/chatzeus/Documentos/FileWA.pdf")
+    fs.createReadStream("./files/A00012.pdf")
   );
 
   var config = {
