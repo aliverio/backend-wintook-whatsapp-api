@@ -10,7 +10,8 @@ const BASE_PREFIX = process.env.BASE_PREFIX || "api";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ['http://localhost:5173/', 'https://wintook.netlify.app/']
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
 // app.use("/static", express.static(`${__dirname}/public`));
